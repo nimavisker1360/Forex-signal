@@ -1,0 +1,165 @@
+[
+  {
+    "_id": "1",
+    "symbol": "BTC/USDT",
+    "background": "bg-warning bg-opacity-20",
+    "Buy_at": 1200,
+    "Sold_at": 34000,
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a1.png",
+    "signal": ["Buy","Sell","Filled"],
+    "Profit": 410,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 20:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "2",
+    "symbol": "ETH/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a2.png",
+    "signal": "sell",
+    "Profit": 1520,
+    "is_featured": false,
+    "createdAt": "UTC+03:00 16:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "3",
+    "symbol": "BNB/USDT",
+    "Buy_at": 20.50,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a3.png",
+    "signal": "buy",
+    "Profit": 410,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 10:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "4",
+    "symbol": "XRP/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a4.png",
+    "signal": "sell",
+    "Profit": 0.52,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 30:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5",
+    "symbol": "SOL/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a5.png",
+    "signal": "buy",
+    "Profit": 102,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 20:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "6",
+    "symbol": "ADA/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a6.png",
+    "signal": "buy",
+    "Profit": 102,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 30:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "7",
+    "symbol": "DOGE/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a7.png",
+    "signal": "buy",
+    "Profit": 102,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 05:02",
+    "updatedAt": "20:02"
+  },
+  {
+    "_id": "8",
+    "symbol": "MATIC/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a8.png",
+    "signal": "buy",
+    "Profit": 102,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 12:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "9",
+    "symbol": "LINK/USDT",
+    "Buy_at": 34500,
+    "Sold_at": 34000,
+    "background": "bg-warning bg-opacity-20",
+
+    "arrow": [
+      "/images/crypto/tick.png",
+      "/images/crypto/down_arrow.png",
+      "/images/crypto/up_arrow.png"
+    ],
+    "images": "/images/crypto/a9.png",
+    "signal": "buy",
+    "Profit": 102,
+    "is_featured": true,
+    "createdAt": "UTC+03:00 16:02",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]
