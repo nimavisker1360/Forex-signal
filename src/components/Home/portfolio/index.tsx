@@ -1,74 +1,109 @@
 "use client";
-import Image from "next/image";
-import { portfolioData } from "@/app/api/data";
-import { motion } from "framer-motion";
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Link from "next/link";
+import React, { useContext } from "react";
+import Marquee from "react-fast-marquee";
+import Moment from "react-moment";
+import RestoreIcon from "@mui/icons-material/Restore";
 
 const Portfolio = () => {
+  const [news, setNews] = useState<
+    { id: string; imageurl: string; title: string; body: string; url: string }[]
+  >([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await axios.get(
+          `https://min-api.cryptocompare.com/data/v2/news/?lang=EN`,
+          {
+            headers: {
+              Authorization: `NEXT_PUBLIC_CRYPTOCOMPARE_API_KEY`,
+            },
+          }
+        );
+        setNews(response.data.Data);
+      } catch (err) {
+        setError("Failed to fetch news. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <section className="md:pt-48 sm:pt-28 pt-12" id="portfolio">
-      <div className="container mx-auto lg:max-w-screen-xl px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 items-center gap-20">
-          <motion.div
-            whileInView={{ y: 0, opacity: 1 }}
-            initial={{ y: "-100%", opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="lg:-ml-32"
-          >
-            <Image
-              src="/images/portfolio/img-portfolio.png"
-              alt="Crypto Portfolio"
-              width={780}
-              height={700}
-            />
-          </motion.div>
+    <>
+      <section
+        className="container-xl lg:container m-auto px-4 py-6"
+        id="portfolio"
+      >
+        <h1 className="py-5 text-xl font-extrabold bg-darkmode text-white text-center ">
+          Latest Crypto News
+        </h1>
 
-          <motion.div
-            whileInView={{ y: 0, opacity: 1 }}
-            initial={{ y: "100%", opacity: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="sm:text-28 text-18 text-muted mb-4">
-              Cryptocurrency <span className="text-primary">Portfolio</span>
-            </p>
-            <h2 className="text-white sm:text-40 text-30 mb-4 font-medium">
-              Create your crypto portfolio today with Cryp
-              <span className="text-primary">Go</span>!
-            </h2>
-            <p className="text-muted text-opacity-60 text-18">
-              Coinbase has a variety of features that make it the best
-              <br className="md:block hidden" /> place to start trading.
-            </p>
+        <Marquee
+          direction="left"
+          className=" container-xl lg:container border m-auto border-base-200 rounded-1xl lg:max-w-screen-xl  bg-darkmode text-white"
+          pauseOnHover
+        >
+          {news?.map((news, index) => (
+            <a
+              href={news.url}
+              target="_blank"
+              key={index.id}
+              className="text-xs mr-5 hover:underline"
+            >
+              {" "}
+              <RestoreIcon className="text-accent text-xs" /> {news.title}
+            </a>
+          ))}
+        </Marquee>
 
-            <table className="w-full sm:w-[80%]">
-              <tbody>
-                {portfolioData.map((item, index) => (
-                  <tr
-                    key={index}
-                    className="border-b border-dark_border border-opacity-10"
-                  >
-                    <td className="py-5">
-                      <div className="bg-primary p-4 rounded-full bg-opacity-20 w-fit">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={35}
-                          height={35}
-                        />
-                      </div>
-                    </td>
-                    <td className="py-5">
-                      <h4 className="text-muted sm:text-28 text-22 ml-5">
-                        {item.title}
-                      </h4>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </motion.div>
+        <div className="footer p-10  max-w-7xl mx-auto text-white">
+          {news?.slice(0, 4).map((news, index) => (
+            <div className="flex flex-col gap-2 flex-1" key={index}>
+              <div className=" w-full">
+                <img
+                  src={news.imageurl}
+                  alt={news.title}
+                  className="rounded-md h-40 md:w-full"
+                />
+              </div>
+              <a
+                href={news.url}
+                target="_blank"
+                className=" w-full text-lg font-bold line-clamp-2 hover:underline hover:cursor-pointer text-blue-500"
+              >
+                {news.title}
+              </a>
+              <h2 className=" w-full text-sm  line-clamp-2">{news.title}</h2>
+              <div className=" w-full justify-center items-center line-clamp-1 text-xs ">
+                <p className="text-gray-400 text-sm mb-2">
+                  {news.body.length > 100
+                    ? `${news.body.substring(0, 100)}...`
+                    : news.body}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </section>
+        <br />
+        <div className="divider ">
+          <Link href="/cryptonews" className="badge badge-accent">
+            Read More...
+          </Link>
+        </div>
+      </section>
+    </>
   );
 };
 

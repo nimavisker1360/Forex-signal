@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
-import { timelineData } from "@/app/api/data";
-import { motion, useInView } from "framer-motion";
+
 import { useRef } from "react";
 import properties from "@/utils/properties.json";
 import PropertyCard from "@/components/propertycard";

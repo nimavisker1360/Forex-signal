@@ -1,11 +1,10 @@
 "use client";
 
-
 import { createContext, useEffect, useState } from "react";
 
 export const CoinContext = createContext();
 
-const CoinContextProvider = ({ children }) => {
+const CoinContextNav = ({ children }) => {
   const [allCoins, setAllCoins] = useState([]);
   const [currency, setCurrency] = useState({ name: "usd", symbol: "$" });
 
@@ -20,7 +19,7 @@ const CoinContextProvider = ({ children }) => {
 
     try {
       const response = await fetch(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd",
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin",
         options
       );
       const data = await response.json();
@@ -39,4 +38,4 @@ const CoinContextProvider = ({ children }) => {
   );
 };
 
-export default CoinContextProvider;
+export default CoinContextNav;

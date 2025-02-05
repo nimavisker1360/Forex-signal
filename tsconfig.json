@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/propertycard.jsx", "src/components/Home/Hero/CoinContext.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/propertycard.jsx", "src/components/Home/Hero/CoinContext.jsx", "src/components/Home/portfolio/index.tsx", "src/components/main/cryptonews-component/index.tsx"],
   "exclude": ["node_modules"]
 }

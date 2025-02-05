@@ -40,7 +40,7 @@ const CoinTable = () => {
   return (
     <>
       <section className="w-full flex flex-col-reverse sm:flex-row pt-5 gap-4 sm:items-center justify-between">
-        <h1 className="h1-bold font-semibold text-3xl text-grey">
+        <h1 className="text-lg sm:text-xl font-semibold text-center   text-grey">
           Your Gateway to a latest
         </h1>
         <div className="flex flex-col gap-4">
@@ -103,26 +103,26 @@ const CoinTable = () => {
           </form>
         </div>
       </section>
-      <div className="max-w-[1000px] m-auto relative mt-6 text-white bg-darkmode rounded-lg">
-        <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1.5fr] p-[15px_20px] items-center border-b border-gray-700">
-          <p className="">Rank</p>
-          <p className="">Coins</p>
-          <p className="">Symbol</p>
-          <p className="">Current Price</p>
-          <p className="">Price Change</p>
+      <div className="max-w-[1000px] m-auto  mt-6 text-white  bg-darkmode rounded-lg table-auto w-full text-center border-collapse">
+        <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1.5fr] p-[15px_20px] items-center border-b   border-gray-700">
+          <p className="p-2 sm:p-2">Rank</p>
+          <p className="p-1 sm:p-2">Coins</p>
+          <p className="p-2 sm:p-3">Symbol</p>
+          <p className="p-2 sm:p-2">Current Price</p>
+          <p className="p-2 sm:p-2">Price Change</p>
           <p className="text-right">Market Cap</p>
         </div>
         {displayCoin.slice(0, 10).map((item, index) => (
           <div
-            className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1.5fr] p-4 items-center border-b border-gray-700"
+            className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1.5fr] p-4 gap-5 items-center justify-between border-b border-gray-700"
             key={index}
           >
-            <p>{item.market_cap_rank}</p>
+            <p className="p-2 sm:p-2">{item.market_cap_rank}</p>
             <div>
               <img className="w-[35px]" src={item.image} alt="" />
               <p>{item.name}</p>
             </div>
-            <p className="uppercase ">{item.symbol}</p>
+            <p className="uppercase p-2 sm:p-2 ">{item.symbol}</p>
             <p>
               {currency.symbol}
               {item.current_price}

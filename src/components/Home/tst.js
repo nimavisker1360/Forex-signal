@@ -20,7 +20,7 @@ import {
   Twitter,
 } from "@mui/icons-material";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
@@ -34,9 +34,10 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import Signin from "@/components/Auth/SignIn";
 import SignUp from "@/components/Auth/SignUp";
-import { ThemeContext } from "@/context/ThemeContext";
+
+import { Icon } from "@iconify/react/dist/iconify.js";
+
 import CoinTableNav from "./Navigation/CointableNav";
-import { Icon } from "@mui/material";
 
 const Header: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -47,8 +48,6 @@ const Header: React.FC = () => {
   const signInRef = useRef<HTMLDivElement>(null);
   const signUpRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  const { theme, changeTheme } = useContext(ThemeContext);
 
   const handleScroll = () => {
     setSticky(window.scrollY >= 80);
@@ -94,98 +93,27 @@ const Header: React.FC = () => {
   }, [isSignInOpen, isSignUpOpen, navbarOpen]);
 
   return (
-    <>
-      <div className=" bg-darkmode  ">
-        <div className="hidden md:flex container mx-auto lg:max-w-screen-xl flex-row max-w-7xl  p-2 ">
-          <CoinTableNav />
-
-          <div className="my-auto space-x-1">
-            <div className="dropdown dropdown-hover dropdown-end">
-              {/* <Settings role="button" className="text-md my-auto" tabIndex={0} /> */}
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52"
-              >
-                <li className="rounded-lg flex flex-row">
-                  <span className="my-auto flex-1 flex">
-                    <span className="flex-1"> Dark Mode</span>
-                    <input
-                      type="checkbox"
-                      className="toggle my-auto flex-end"
-                      onChange={(event) => {
-                        if (event.target.checked) {
-                          changeTheme("dark");
-                        } else {
-                          changeTheme("corporate");
-                        }
-                      }}
-                    />
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <Link href="/submityourtoken" className="btn btn-success btn-sm">
-              Go To Telegram Bot
-            </Link>
-          </div>
+    <header className=" bg-darkmode pt-5 shadow-none md:pt-10  ">
+      <div className=" my-auto  md:flex flex-row lg:max-w-screen-xl mx-auto items-center justify-between  ">
+        <CoinTableNav />
+        <Link
+          href="/submityourtoken"
+          className="lg:block bg-transparent text-primary border hover:bg-primary border-primary hover:text-darkmode px-2 py-2 mb-5 rounded-lg hidden "
+        >
+          Telegram Bot
+        </Link>
+        <div className="my-auto space-x-1">
+          <div className="dropdown dropdown-hover dropdown-end"></div>
         </div>
+      </div>
+      <hr className=" mx-auto lg:max-w-screen-xl mt-2 lg:block hidden " />
+      <div className="lg:py-1 py-2">
+        <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md flex items-center justify-between mt-2 px-4">
+          <Logo />
 
-        <hr className="container mx-auto lg:max-w-screen-xl  py-5" />
-        {/* <div className="border border-[1px] border-accent"></div> */}
-
-        <div className="navbar max-w-6xl mx-auto flex flex-row">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a>Item 1</a>
-                </li>
-                <li>
-                  <a>Parent</a>
-                  <ul className="p-2">
-                    <li>
-                      <a>Submenu 1</a>
-                    </li>
-                    <li>
-                      <a>Submenu 2</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>Item 3</a>
-                </li>
-              </ul>
-            </div>
-            <Logo />
-          </div>
-
-          <div className="navbar-start hidden lg:flex  ">
+          <div className="navbar-start hidden lg:flex text-white">
             <ul className="menu menu-horizontal px-1 gap-5">
-              <li className="dropdown dropdown-hover dropdown-start dropdown-bottom font-bold my-auto hover:cursor-pointer text-white">
+              <li className="dropdown dropdown-hover dropdown-start dropdown-bottom font-bold my-auto hover:cursor-pointer">
                 Cryptocurrencies
                 <ul
                   tabIndex={0}
@@ -204,6 +132,7 @@ const Header: React.FC = () => {
                     </span>
                   </li>
 
+                  <hr />
                   <li className="rounded-lg flex flex-row">
                     <span className="my-auto flex-1 flex">
                       <AutoAwesomeIcon className="text-sm" />
@@ -271,16 +200,19 @@ const Header: React.FC = () => {
               </li>
             </ul>
           </div>
-    
-          <div className="gap-5 lg:flex ">
+
+          {/*web device */}
+
+          <hr className=" mx-auto lg:max-w-screen-xl " />
+          <div className="flex items-center gap-2">
             <Link
               href="#"
-              className="hidden text-center lg:block bg-transparent text-primary border hover:bg-primary border-primary hover:text-darkmode px-8 py-1 rounded-lg"
+              className="hidden lg:block bg-transparent text-primary border hover:bg-primary border-primary hover:text-darkmode px-4 py-2 rounded-lg"
               onClick={() => {
                 setIsSignInOpen(true);
               }}
             >
-              Sign In 
+              Sign In
             </Link>
             {isSignInOpen && (
               <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -293,7 +225,10 @@ const Header: React.FC = () => {
                     className="absolute top-0 right-0 mr-8 mt-8 dark:invert"
                     aria-label="Close Sign In Modal"
                   >
-                  
+                    <Icon
+                      icon="tabler:currency-xrp"
+                      className="text-white hover:text-primary text-24 inline-block me-2"
+                    />
                   </button>
                   <Signin />
                 </div>
@@ -320,17 +255,82 @@ const Header: React.FC = () => {
                     className="absolute top-0 right-0 mr-8 mt-8 dark:invert"
                     aria-label="Close Sign Up Modal"
                   >
-                    
+                    <Icon
+                      icon="tabler:currency-xrp"
+                      className="text-white hover:text-primary text-24 inline-block me-2"
+                    />
                   </button>
                   <SignUp />
                 </div>
               </div>
             )}
 
+            <button
+              onClick={() => setNavbarOpen(!navbarOpen)}
+              className="block lg:hidden p-2 rounded-lg "
+              aria-label="Toggle mobile menu"
+            >
+              <span className="block w-6 h-0.5 bg-white"></span>
+              <span className="block w-6 h-0.5 bg-white mt-1.5"></span>
+              <span className="block w-6 h-0.5 bg-white mt-1.5"></span>
+            </button>
           </div>
         </div>
+
+        {navbarOpen && (
+          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40" />
+        )}
+
+        <div
+          ref={mobileMenuRef}
+          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-darkmode shadow-lg transform transition-transform duration-300 max-w-xs ${
+            navbarOpen ? "translate-x-0" : "translate-x-full"
+          } z-50`}
+        >
+          <div className="flex items-center justify-between p-4">
+            <h2 className="text-lg font-bold text-midnight_text dark:text-midnight_text">
+              <Logo />
+            </h2>
+
+            {/*  */}
+            <button
+              onClick={() => setNavbarOpen(false)}
+              className="bg-[url('/images/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 "
+              aria-label="Close menu Modal"
+            ></button>
+          </div>
+
+          <nav className="flex flex-col items-center p-20 gap-4">
+            {headerData.map((item, index) => (
+              <MobileHeaderLink key={index} item={item} />
+            ))}
+
+            <div className="mt-4 flex flex-col space-y-4 w-full">
+              <Link
+                href="#"
+                className="bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white"
+                onClick={() => {
+                  setIsSignInOpen(true);
+                  setNavbarOpen(false);
+                }}
+              >
+                Sign In
+              </Link>
+              <Link
+                href="#"
+                className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                onClick={() => {
+                  setIsSignUpOpen(true);
+                  setNavbarOpen(false);
+                }}
+              >
+                Sign Up
+              </Link>
+            </div>
+          </nav>
+        </div>
       </div>
-    </>
+    </header>
   );
 };
 
