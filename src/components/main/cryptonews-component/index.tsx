@@ -1,16 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import axios from "axios";
 import Moment from "react-moment";
 import RestoreIcon from "@mui/icons-material/Restore";
 import Image from "next/image";
+import Link from "next/link";
 
 const CryptoNewsComponent = () => {
   const [page, setPage] = useState(10);
 
   const [news, setNews] = useState<
-    { id: string; imageurl: string; title: string; body: string; url: string }[]
+    {
+      date_added: string | number | Date | undefined;
+      location: ReactNode; id: string; imageurl: string; title: string; body: string; url: string 
+}[]
   >([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -45,7 +49,7 @@ const CryptoNewsComponent = () => {
       <div className="max-w-7xl mx-auto py-20 text-center">
         <div className="hidden lg:flex  lg:flex-row lg:gap-3 my-5">
           {news.map((items, index) => (
-            <div key={index.id} className="w-full">
+            <div key={items.id} className="w-full">
               <img
                 src={items.imageurl}
                 alt={items.title}

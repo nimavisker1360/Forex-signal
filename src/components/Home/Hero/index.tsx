@@ -11,13 +11,16 @@ const Hero = () => {
   const BuyRef = useRef<HTMLDivElement>(null);
   const SellRef = useRef<HTMLDivElement>(null);
 
-  
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
-    <section
-      
-      id="main-banner"
-    >
+    <section id="main-banner">
       <div className="container text-sm sm:text-base  mx-auto lg:max-w-screen-xl px-4 ">
         <hr className="container mx-auto lg:max-w-screen-xl  " />
         <div className="my-auto hidden md:flex flex-row lg:max-w-screen-xl mx-auto p-2 ">

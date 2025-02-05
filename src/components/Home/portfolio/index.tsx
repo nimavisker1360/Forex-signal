@@ -59,7 +59,7 @@ const Portfolio = () => {
             <a
               href={news.url}
               target="_blank"
-              key={index.id}
+              key={news.id}
               className="text-xs mr-5 hover:underline"
             >
               {" "}
